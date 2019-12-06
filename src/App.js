@@ -4,9 +4,11 @@ import Deck from './components/Deck';
 
 function App() {
   return (
-    <div className="game">
-      <Deck />
-    </div>
+    <React.StrictMode>
+      <div className="game">
+        <Deck />
+      </div>
+    </React.StrictMode>
   );
 }
 
