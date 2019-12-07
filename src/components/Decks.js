@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { actions } from '../store';
 
 function Deck({ deck }) {
-  return <div>{deck.map((card) => `${card.code} `)}</div>;
+  return <div>{deck.map((card) => <img alt={card.code} src={card.image} />)}</div>;
 }
 
 Deck.propTypes = {
