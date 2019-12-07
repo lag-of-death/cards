@@ -16,27 +16,39 @@ function createGetShuffledDecks(service) {
   return () => service.get('/shuffled-decks').then(preload);
 }
 
+function createSaveScore(service) {
+  return (gamerName, rounds) => service.post('/results', { gamerName, rounds }).then(({ data }) => data);
+}
+
 export default {
   chooseCard: (card, chosenCards, deckId) => {
     const card_ = { ...card, code: card.code + deckId };
+
     const chosenCards_ = (
       (chosenCards.chosen.length < 2)
         ? chosenCards.chosen.concat(card_)
         : [card_]
     );
+
     const areTheSame = (
       chosenCards_.length === 2
         && (chosenCards_[0].code.substring(0, 2) === chosenCards_[1].code.substring(0, 2))
     );
 
+    const guessedPairs = (
+      areTheSame
+        ? chosenCards.guessedPairs.concat(chosenCards_[0].code.substring(0, 2))
+        : chosenCards.guessedPairs
+    );
+
     return {
+      isFinished: guessedPairs.length === 3,
       clickCounter: chosenCards.clickCounter + 1,
       chosen: chosenCards_,
-      guessedPairs: areTheSame
-        ? chosenCards.guessedPairs.concat(chosenCards_[0].code.substring(0, 2))
-        : chosenCards.guessedPairs,
+      guessedPairs,
     };
   },
+  saveScore: createSaveScore(axios),
   getDecks: createGetDecks(axios),
   getShuffledDecks: createGetShuffledDecks(axios),
 };

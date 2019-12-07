@@ -1,8 +1,9 @@
 const { actions } = require('./repository');
 
-const newDeckOf9cards = 'https://deckofcardsapi.com/api/deck/new/draw/?count=9';
+const numberOfCardsToDraw = 3;
+const newDeckOf9cards = `https://deckofcardsapi.com/api/deck/new/draw/?count=${numberOfCardsToDraw}`;
 const newDeckWithCards = (cards) => `https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${cards.map(({ code }) => code)}`;
-const cardsFromDeck = (deckId) => `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=9`;
+const cardsFromDeck = (deckId) => `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numberOfCardsToDraw}`;
 const shuffledCards = (deckId) => `https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`;
 
 function getDecks(service, repository) {
@@ -54,7 +55,17 @@ function getShuffledDecks(service, repository) {
     );
 }
 
+function saveScore(repository, score) {
+  repository.dispatch({
+    type: actions.ADD_SCORE,
+    payload: score,
+  });
+
+  return Promise.resolve(repository.getState().scores);
+}
+
 module.exports = {
+  saveScore,
   getDecks,
   getShuffledDecks,
 };
