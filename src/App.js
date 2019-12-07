@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
-import Deck from './components/Deck';
+import Decks from './components/Decks';
 import { store } from './store';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <React.StrictMode>
       <Provider store={store}>
         <div className="game">
-          <Deck />
+          <Decks />
         </div>
       </Provider>
     </React.StrictMode>

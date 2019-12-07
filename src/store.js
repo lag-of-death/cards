@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 import useCases from './useCases';
 
 export const actions = {
-  SET_DECK: 'SET_DECK',
+  SET_DECKS: 'SET_DECKS',
 };
 
 const reducer = (state, action) => {
   const handlers = {
-    [actions.SET_DECK]: (deck) => ({ ...state, deck: deck.cards }),
+    [actions.SET_DECKS]: (decks) => ({ ...state, decks }),
   };
 
   try {
@@ -20,6 +20,6 @@ const reducer = (state, action) => {
 
 export const store = createStore(
   reducer,
-  { deck: [] },
+  { decks: [[], []] },
   applyMiddleware(thunk.withExtraArgument(useCases)),
 );
