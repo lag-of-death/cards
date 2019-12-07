@@ -36,19 +36,6 @@ function DeckContainer({ decks, getDecks, rounds }) {
   );
 }
 
-export function getDecks(dispatch) {
-  return () => {
-    dispatch(async (disp, getState, useCases) => {
-      const decks = await useCases.getDecks();
-
-      disp({
-        type: actions.SET_DECKS,
-        payload: decks,
-      });
-    });
-  };
-}
-
 DeckContainer.propTypes = {
   rounds: propTypes.number.isRequired,
   decks: propTypes.arrayOf(propTypes.object).isRequired,
@@ -58,6 +45,15 @@ DeckContainer.propTypes = {
 export default connect(
   ({ decks, chosenCards }) => ({ decks, rounds: chosenCards.rounds }),
   (dispatch) => ({
-    getDecks: getDecks(dispatch),
+    getDecks: () => {
+      dispatch(async (disp, getState, useCases) => {
+        const decks = await useCases.getDecks();
+
+        disp({
+          type: actions.SET_DECKS,
+          payload: decks,
+        });
+      });
+    },
   }),
 )(DeckContainer);

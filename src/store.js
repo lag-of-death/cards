@@ -10,11 +10,15 @@ export const actions = {
   SET_DECKS: 'SET_DECKS',
   SHOW_RESULTS: 'SHOW_RESULTS',
   CHOOSE_CARD: 'CHOOSE_CARD',
+  START_AGAIN: 'START_AGAIN',
 };
 
 const reducer = (state, action) => {
   const handlers = {
     [actions.SET_DECKS]: (decks) => ({ ...state, decks, chosenCards: initialChosenCards }),
+    [actions.START_AGAIN]: () => ({
+      ...state, chosenCards: initialChosenCards, results: [], decks: [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }],
+    }),
     [actions.CHOOSE_CARD]: (chosenCards) => (
       {
         ...state,

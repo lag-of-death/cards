@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import propTypes from 'prop-types';
 import './App.css';
 
-import Decks, { getDecks } from './components/Decks';
+import Decks from './components/Decks';
 import Shuffle from './components/Shuffle';
 import Restart from './components/Restart';
 
@@ -43,8 +43,16 @@ function Game({
     results.length
       ? (
         <>
-          <div>{JSON.stringify(results)}</div>
-          <button type="button" onClick={startAgain}>again!</button>
+          <div>{JSON.stringify(results.sort((a, b) => (a.rounds > b.rounds ? 1 : -1)))}</div>
+          <button
+            type="button"
+            onClick={(evt) => {
+              evt.stopPropagation();
+
+              startAgain();
+            }}
+          >again!
+          </button>
         </>
       )
       : (<SaveScoreForm saveScore={saveScore} />)
@@ -71,7 +79,9 @@ Game.propTypes = {
 const GameContainer = connect(
   ({ chosenCards, results }) => ({ isFinished: chosenCards.isFinished, results }),
   (dispatch) => ({
-    startAgain: getDecks(dispatch),
+    startAgain: () => {
+      dispatch({ type: 'START_AGAIN' });
+    },
     saveScore: (gamerName) => {
       dispatch(async (disp, getState, useCases) => {
         const results = await useCases.saveScore(
