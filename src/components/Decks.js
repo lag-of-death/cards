@@ -7,13 +7,18 @@ import Card from './Card';
 function Deck({ deck }) {
   return (
     <div style={{ display: 'flex' }}>
-      {deck.map((card) => <Card key={card.code} card={card} />)}
+      {deck.cards.map(
+        (card) => <Card deckId={deck.deck_id} key={card.code + deck.deck_id} card={card} />,
+      )}
     </div>
   );
 }
 
 Deck.propTypes = {
-  deck: propTypes.arrayOf(propTypes.object).isRequired,
+  deck: propTypes.shape({
+    deck_id: propTypes.string,
+    cards: propTypes.arrayOf(propTypes.shape({ code: propTypes.string })),
+  }).isRequired,
 };
 
 function DeckContainer({ decks, getDecks }) {
@@ -29,12 +34,12 @@ function DeckContainer({ decks, getDecks }) {
 }
 
 DeckContainer.propTypes = {
-  decks: propTypes.arrayOf(propTypes.arrayOf(propTypes.object)).isRequired,
+  decks: propTypes.arrayOf(propTypes.object).isRequired,
   getDecks: propTypes.func.isRequired,
 };
 
 export default connect(
-  ({ decks }) => ({ decks }),
+  ({ decks, chosenCards }) => ({ decks, chosenCards }),
   (dispatch) => ({
     getDecks: () => {
       dispatch(async (disp, getState, useCases) => {
