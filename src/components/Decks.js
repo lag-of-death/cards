@@ -1,11 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import { actions } from '../store';
+import Card from './Card';
 
 function Deck({ deck }) {
-  return <div>{deck.map((card) => <img alt={card.code} src={card.image} />)}</div>;
+  return (
+    <div style={{ display: 'flex' }}>
+      {deck.map((card) => <Card key={card.code} card={card} />)}
+    </div>
+  );
 }
 
 Deck.propTypes = {
