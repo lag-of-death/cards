@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { actions } from '../store';
 
 function Deck({ deck }) {
-  return <div>{JSON.stringify(deck)}</div>;
+  return <div>{deck.map((card) => `${card.code} `)}</div>;
 }
 
 Deck.propTypes = {
@@ -34,11 +34,11 @@ export default connect(
   (dispatch) => ({
     getDecks: () => {
       dispatch(async (disp, getState, useCases) => {
-        const deck = await useCases.getDecks();
+        const decks = await useCases.getDecks();
 
         disp({
           type: actions.SET_DECKS,
-          payload: deck,
+          payload: decks,
         });
       });
     },

@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
 import Decks from './components/Decks';
+import Shuffle from './components/Shuffle';
 import { store } from './store';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <React.StrictMode>
       <Provider store={store}>
         <div className="game">
+          <Shuffle />
           <Decks />
         </div>
       </Provider>
