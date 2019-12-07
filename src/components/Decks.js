@@ -21,11 +21,14 @@ Deck.propTypes = {
   }).isRequired,
 };
 
-function DeckContainer({ decks, getDecks }) {
+function DeckContainer({ decks, getDecks, rounds }) {
   React.useEffect(getDecks, []);
 
   return (
     <>
+      <div>
+        Rounds: {rounds}
+      </div>
       <Deck deck={decks[0]} />
       <hr />
       <Deck deck={decks[1]} />
@@ -34,12 +37,13 @@ function DeckContainer({ decks, getDecks }) {
 }
 
 DeckContainer.propTypes = {
+  rounds: propTypes.number.isRequired,
   decks: propTypes.arrayOf(propTypes.object).isRequired,
   getDecks: propTypes.func.isRequired,
 };
 
 export default connect(
-  ({ decks, chosenCards }) => ({ decks, chosenCards }),
+  ({ decks, chosenCards }) => ({ decks, rounds: Math.floor(chosenCards.clickCounter / 2) }),
   (dispatch) => ({
     getDecks: () => {
       dispatch(async (disp, getState, useCases) => {

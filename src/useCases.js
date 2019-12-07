@@ -30,6 +30,7 @@ export default {
     );
 
     return {
+      clickCounter: chosenCards.clickCounter + 1,
       chosen: chosenCards_,
       guessedPairs: areTheSame
         ? chosenCards.guessedPairs.concat(chosenCards_[0].code.substring(0, 2))

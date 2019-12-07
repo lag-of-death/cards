@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import useCases from './useCases';
 
-const chosenCards = { guessedPairs: [], chosen: [] };
+const initialChosenCards = { guessedPairs: [], chosen: [], clickCounter: 0 };
 
 export const actions = {
   SET_DECKS: 'SET_DECKS',
@@ -11,7 +11,7 @@ export const actions = {
 
 const reducer = (state, action) => {
   const handlers = {
-    [actions.SET_DECKS]: (decks) => ({ ...state, decks, chosenCards }),
+    [actions.SET_DECKS]: (decks) => ({ ...state, decks, chosenCards: initialChosenCards }),
     [actions.CHOOSE_CARD]: (chosenCards) => ({ ...state, chosenCards }),
   };
 
@@ -24,6 +24,6 @@ const reducer = (state, action) => {
 
 export const store = createStore(
   reducer,
-  { decks: [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }], chosenCards },
+  { decks: [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }], chosenCards: initialChosenCards },
   applyMiddleware(thunk.withExtraArgument(useCases)),
 );
