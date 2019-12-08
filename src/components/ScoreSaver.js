@@ -5,6 +5,11 @@ import './ScoreSaver.css';
 
 export default function ScoreSaver({ saveScore }) {
   const [name, changeName] = React.useState('');
+  const ref = React.useRef();
+
+  React.useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   return (
     <>
@@ -23,6 +28,7 @@ export default function ScoreSaver({ saveScore }) {
 
         <label htmlFor="gamer">Gamer name:
           <input
+            ref={ref}
             className="button save-score__name-input"
             id="gamer"
             name="gamer"

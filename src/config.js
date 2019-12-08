@@ -1,3 +1,4 @@
 module.exports = {
-  numberOfCardsToDraw: 5,
+  numberOfCardsToDraw: 2,
 };
+
