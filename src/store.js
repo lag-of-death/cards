@@ -6,6 +6,8 @@ const initialChosenCards = {
   guessedPairs: [], chosen: [], clickCounter: 0, isFinished: false, rounds: 0,
 };
 
+const initialDecks = [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }];
+
 export const actions = {
   SET_DECKS: 'SET_DECKS',
   SHOW_RESULTS: 'SHOW_RESULTS',
@@ -17,7 +19,7 @@ const reducer = (state, action) => {
   const handlers = {
     [actions.SET_DECKS]: (decks) => ({ ...state, decks, chosenCards: initialChosenCards }),
     [actions.START_AGAIN]: () => ({
-      ...state, chosenCards: initialChosenCards, results: [], decks: [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }],
+      ...state, chosenCards: initialChosenCards, results: [], decks: initialDecks,
     }),
     [actions.CHOOSE_CARD]: (chosenCards) => (
       {
@@ -37,6 +39,6 @@ const reducer = (state, action) => {
 
 export const store = createStore(
   reducer,
-  { decks: [{ cards: [], deck_id: '' }, { cards: [], deck_id: '' }], chosenCards: initialChosenCards, results: [] },
+  { decks: initialDecks, chosenCards: initialChosenCards, results: [] },
   applyMiddleware(thunk.withExtraArgument(useCases)),
 );

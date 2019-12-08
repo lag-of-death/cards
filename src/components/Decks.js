@@ -3,10 +3,11 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { actions } from '../store';
 import Card from './Card';
+import './Decks.css';
 
 function Deck({ deck }) {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="deck">
       {deck.cards.map(
         (card) => <Card deckId={deck.deck_id} key={card.code + deck.deck_id} card={card} />,
       )}
