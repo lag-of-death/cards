@@ -22,9 +22,7 @@ export function Card({
         data-testid="card"
         type="button"
         onClick={() => chooseCard(card, deckId)}
-      >
-        {card.code}
-      </button>
+      />
 
       <img alt={card.code} src={card.image} />
     </ReactCardFlip>
