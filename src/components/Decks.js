@@ -5,7 +5,7 @@ import { actions } from '../store';
 import Card from './Card';
 import './Decks.css';
 
-function Deck({ deck }) {
+export function Deck({ deck }) {
   return (
     <div className="deck">
       {deck.cards.map(

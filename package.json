@@ -22,7 +22,9 @@
     "lint": "eslint ./server ./src ./server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test-client": "react-scripts test --watchAll=false",
+    "test-server": "jest ./server/useCases.test.js",
+    "test": "npm run test-client && npm run test-server",
     "eject": "react-scripts eject",
     "watch": "cra-build-watch",
     "watch-server": "nodemon server.js"

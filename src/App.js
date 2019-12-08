@@ -58,7 +58,6 @@ function Game({
       : (<SaveScoreForm saveScore={saveScore} />)
   ) : (
     <div className="game">
-      <div>{JSON.stringify(isFinished)}</div>
       <Restart />
       <Shuffle />
       <Decks />

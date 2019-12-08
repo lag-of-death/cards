@@ -31,6 +31,7 @@
     "no-console": 0,
     "camelcase": 0,
     "import/prefer-default-export": 0,
+    "import/no-named-as-default": 0,
     "no-shadow": 0,
     "no-restricted-globals": 0,
     "import/imports-first": [
@@ -40,6 +41,9 @@
     "import/newline-after-import": "error"
   },
   "globals": {
+    "jest": true,
+    "describe": true,
+    "it":  true,
     "Image": true,
     "document": true,
     "test": true,
