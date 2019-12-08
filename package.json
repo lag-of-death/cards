@@ -20,14 +20,14 @@
   },
   "scripts": {
     "lint": "eslint ./server ./src ./server.js",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test-client": "react-scripts test --watchAll=false",
     "test-server": "jest ./server/useCases.test.js",
     "test": "npm run test-client && npm run test-server",
     "eject": "react-scripts eject",
     "watch": "cra-build-watch",
-    "watch-server": "nodemon server.js"
+    "watch-server": "nodemon server.js",
+    "start": "yarn build && node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
