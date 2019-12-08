@@ -9,7 +9,7 @@ There are almost no tests and the coverage is lamentable.
 
 ### `yarn/npm run start`
 
-Compiles client-side scripts and runs the server on PORT env variable (defaults to 3000).
+Installs dependencies, compiles client-side scripts and runs the server on PORT env variable (defaults to 3000).
 
 ## Next steps
 
