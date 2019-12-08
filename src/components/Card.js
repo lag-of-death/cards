@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { actions } from '../store';
 
+import './Card.css';
+
 export function Card({
   card, chooseCard, chosenCards, deckId,
 }) {
@@ -16,6 +18,7 @@ export function Card({
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <button
+        className="card-front"
         data-testid="card"
         type="button"
         onClick={() => chooseCard(card, deckId)}

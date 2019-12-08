@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import { actions } from '../store';
 
 function Restart({ restart }) {
-  return <button type="button" onClick={restart}>restart</button>;
+  return (
+    <button
+      className="button"
+      type="button"
+      onClick={restart}
+    >restart
+    </button>
+  );
 }
 
 Restart.propTypes = {

@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import { actions } from '../store';
 
 function Shuffle({ getShuffledDecks }) {
-  return <button type="button" onClick={getShuffledDecks}>shuffle</button>;
+  return (
+    <button
+      className="button"
+      type="button"
+      onClick={getShuffledDecks}
+    >shuffle
+    </button>
+  );
 }
 
 Shuffle.propTypes = {

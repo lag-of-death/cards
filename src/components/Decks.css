@@ -1,3 +1,4 @@
 .deck {
     display: flex;
+    justify-content: center;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { actions } from '../store';
 import Card from './Card';
+
 import './Decks.css';
 
 export function Deck({ deck }) {
@@ -31,7 +33,6 @@ function DeckContainer({ decks, getDecks, rounds }) {
         Rounds: {rounds}
       </div>
       <Deck deck={decks[0]} />
-      <hr />
       <Deck deck={decks[1]} />
     </>
   );

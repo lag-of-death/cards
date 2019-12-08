@@ -1,0 +1,13 @@
+.save-score__form {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.save-score__message {
+    text-align: center;
+}
+
+.save-score__name-input {
+    padding: 4px;
+}

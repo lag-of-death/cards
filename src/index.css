@@ -1,4 +1,16 @@
 .body {
-  margin: 0;
-  font-family: monospace;
+    margin: 0;
+    font-family: monospace;
+}
+
+.html {
+    font-size: 20px;
+}
+
+.button {
+    font-size: 1rem;
+    border: 2px solid black;
+    box-shadow: 1px 1px 0 gray;
+    padding: 4px;
+    margin: 1px;
 }

@@ -1,0 +1,20 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.game__action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.game__results {
+    text-align: center;
+}
+
+.game__restarter {
+    margin: 1rem auto;
+    max-width: 20%;
+}
