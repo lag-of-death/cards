@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { numberOfCardsToDraw } from './config';
+
 function preload({ data }) {
   data[0].cards.forEach((card) => {
     new Image().src = card.image;
@@ -42,7 +44,7 @@ export default {
     );
 
     return {
-      isFinished: guessedPairs.length === 3,
+      isFinished: guessedPairs.length === numberOfCardsToDraw,
       clickCounter: chosenCards.clickCounter + 1,
       chosen: chosenCards_,
       guessedPairs,

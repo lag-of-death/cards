@@ -1,6 +1,7 @@
 const { actions } = require('./repository');
 
-const numberOfCardsToDraw = 3;
+const { numberOfCardsToDraw } = require('../src/config');
+
 const newDeckOf9cards = `https://deckofcardsapi.com/api/deck/new/draw/?count=${numberOfCardsToDraw}`;
 const newDeckWithCards = (cards) => `https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${cards.map(({ code }) => code)}`;
 const cardsFromDeck = (deckId) => `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numberOfCardsToDraw}`;
