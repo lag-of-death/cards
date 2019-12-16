@@ -1,7 +1,7 @@
 const axios = require('axios');
 
+const { store } = require('@decks/server-repository');
 const useCases = require('./useCases');
-const { store } = require('./repository');
 
 module.exports = {
   saveScore: (req) => useCases.saveScore(store, req.body),

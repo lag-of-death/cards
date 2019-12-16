@@ -1,4 +1,4 @@
-const { actions } = require('./repository');
+const { actions } = require('@decks/server-repository');
 
 const { numberOfCardsToDraw } = require('../src/config');
 
