@@ -5,5 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "redux": "^4.0.4"
+  },
+  "scripts": {
+    "test": "echo @decks/server-gateway"
   }
 }
