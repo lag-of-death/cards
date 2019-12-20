@@ -1,10 +1,9 @@
-const axios = require('axios');
-
 const { store } = require('@decks/server-gateway');
+const apiGateway = require('@decks/server-api-gateway');
 const useCases = require('@decks/server-domain');
 
 module.exports = {
-  saveScore: (req) => useCases.saveScore(store, req.body),
-  getShuffledDecks: () => useCases.getShuffledDecks(axios, store),
-  getDecks: () => useCases.getDecks(axios, store),
+  saveScore: (_, req) => useCases.saveScore(store, req.body),
+  getShuffledDecks: (config) => useCases.getShuffledDecks(apiGateway(config), store),
+  getDecks: (config) => useCases.getDecks(apiGateway(config), store),
 };
