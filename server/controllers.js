@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { store } = require('@decks/server-repository');
+const { store } = require('@decks/server-gateway');
 const useCases = require('./useCases');
 
 module.exports = {

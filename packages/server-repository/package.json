@@ -1,5 +1,5 @@
 {
-  "name": "@decks/server-repository",
+  "name": "@decks/server-gateway",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

@@ -1,4 +1,4 @@
-const { actions } = require('@decks/server-repository');
+const { actions } = require('@decks/server-gateway');
 const { saveScore } = require('./useCases');
 
 describe('saveScore()', () => {
