@@ -2,8 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 
-import config from './config';
-import useCases from './useCases';
+import useCases from '@decks/client-domain';
 
 const initialChosenCards = {
   guessedPairs: [], chosen: [], clickCounter: 0, isFinished: false, rounds: 0,
@@ -40,7 +39,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const store = createStore(
+export const store = (config) => createStore(
   reducer,
   { decks: initialDecks, chosenCards: initialChosenCards, results: [] },
   applyMiddleware(thunk.withExtraArgument((() => {

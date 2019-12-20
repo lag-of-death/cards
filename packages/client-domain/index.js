@@ -1,4 +1,4 @@
-export default ({ numberOfCardsToDraw }) => ({
+module.exports = ({ numberOfCardsToDraw }) => ({
   chooseCard: chooseCard.bind({}, numberOfCardsToDraw),
   createSaveScore,
   createGetDecks,
@@ -16,7 +16,7 @@ function chooseCard(numberOfCardsToDraw, card, chosenCards, deckId) {
 
   const areTheSame = (
     chosenCards_.length === 2
-      && (chosenCards_[0].code.substring(0, 2) === chosenCards_[1].code.substring(0, 2))
+        && (chosenCards_[0].code.substring(0, 2) === chosenCards_[1].code.substring(0, 2))
   );
 
   const guessedPairs = (

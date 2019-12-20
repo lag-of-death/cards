@@ -1,4 +1,4 @@
-import useCases from './useCases';
+const useCases = require('./index');
 
 const uc = useCases({ numberOfCardsToDraw: 5 });
 
