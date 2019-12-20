@@ -13,8 +13,6 @@ Installs dependencies, compiles client-side scripts and runs the server on PORT 
 
 ## Next steps
 
-Because of the time limit, there is still a lot to do:
-
 1. Cover the codebase with unit tests.
 2. Ideally add some E2E tests.
 3. Generate OAS with annotations with the use of `express-swagger-generator`. 
@@ -23,9 +21,10 @@ Because of the time limit, there is still a lot to do:
 6. Introduce RWD. For now, the app was only developed with desktops in mind and the given resolution of the cards.
 7. Add exception identification and handling. Could add error boundaries to the client-side and some fault prevention for the back-end.
 8. Remove data-testid(s) when creating the bundle. Data-testid(s) are only needed in testing. 
-
+9. Distinguish between DTOs and Entities.
 
 ## Possible changes to the game mechanics
 
 1. If the two cards don't match, turn them back over immediately (don't wait for the user to click on the next card).
-2. Do not reset the rounds counter when shuffling the cards. Keep the counter as is and don't turn over the guessed pairs. Only rearrange the cards that are not yet matched.
+2. Do not reset the rounds counter when shuffling the cards. Keep the counter as is and don't turn over the guessed pairs. 
+   Only rearrange the cards that are not yet matched.
