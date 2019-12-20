@@ -21,9 +21,7 @@ Object {
               class="card-front"
               data-testid="card"
               type="button"
-            >
-              AS
-            </button>
+            />
           </div>
           <div
             class="react-card-back"
@@ -55,9 +53,7 @@ Object {
             class="card-front"
             data-testid="card"
             type="button"
-          >
-            AS
-          </button>
+          />
         </div>
         <div
           class="react-card-back"

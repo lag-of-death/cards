@@ -1,5 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+
+import config from './config';
 import useCases from './useCases';
 
 const initialChosenCards = {
@@ -40,5 +43,14 @@ const reducer = (state, action) => {
 export const store = createStore(
   reducer,
   { decks: initialDecks, chosenCards: initialChosenCards, results: [] },
-  applyMiddleware(thunk.withExtraArgument(useCases)),
+  applyMiddleware(thunk.withExtraArgument((() => {
+    const uc = useCases(config);
+
+    return {
+      chooseCard: uc.chooseCard,
+      saveScore: uc.createSaveScore(axios),
+      getDecks: uc.createGetDecks(axios),
+      getShuffledDecks: uc.createGetShuffledDecks(axios),
+    };
+  })())),
 );
