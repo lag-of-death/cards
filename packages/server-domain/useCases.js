@@ -1,6 +1,4 @@
-const { actions } = require('@decks/server-gateway');
-
-const { numberOfCardsToDraw } = require('../src/config');
+const { numberOfCardsToDraw } = require('../../src/config');
 
 const newDeckOf9cards = `https://deckofcardsapi.com/api/deck/new/draw/?count=${numberOfCardsToDraw}`;
 const newDeckWithCards = (cards) => `https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${cards.map(({ code }) => code)}`;
@@ -27,12 +25,7 @@ function getDecks(service, repository) {
     .then(([{ data: deckAWithCards }, { data: deckBWithCards }]) => {
       const decks = [deckAWithCards, deckBWithCards];
 
-      repository.dispatch(
-        {
-          type: actions.SET_IDS_OF_DECKS,
-          payload: decks.map(({ deck_id }) => deck_id),
-        },
-      );
+      repository.setIdsOfDecks(decks);
 
       return decks;
     });
@@ -57,10 +50,7 @@ function getShuffledDecks(service, repository) {
 }
 
 function saveScore(repository, score) {
-  repository.dispatch({
-    type: actions.ADD_SCORE,
-    payload: score,
-  });
+  repository.saveScore(score);
 
   return Promise.resolve(repository.getState().scores);
 }

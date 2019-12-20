@@ -18,7 +18,21 @@ const reducer = (state, action) => {
   }
 };
 
+const store = createStore(reducer, { scores: [], idsOfDecks: ['', ''] });
+
 module.exports = {
   actions,
-  store: createStore(reducer, { scores: [], idsOfDecks: ['', ''] }),
+  store: {
+    saveScore: (score) => store.dispatch({
+      type: actions.ADD_SCORE,
+      payload: score,
+    }),
+    setIdsOfDecks: (decks) => store.dispatch(
+      {
+        type: actions.SET_IDS_OF_DECKS,
+        payload: decks.map(({ deck_id }) => deck_id),
+      },
+    ),
+    getState: store.getState,
+  },
 };

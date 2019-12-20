@@ -1,0 +1,12 @@
+{
+  "name": "@decks/server-domain",
+  "version": "1.0.0",
+  "main": "useCases.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest useCases.test.js"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
